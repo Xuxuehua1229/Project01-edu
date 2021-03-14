@@ -1,0 +1,33 @@
+server:
+  port: 8003
+
+# 服务器名称
+spring:
+  application:
+    name: ucenter-service
+  # 环境设置 dev、test、prod
+  profiles:
+    active: dev
+  # mysql数据库连接
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/guli_edu?serverTimezone=GMT%2B8&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 123456
+
+# 配置服务注册
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:7002/eureka/
+    # eureka服务器上获取的是服务器的ip地址，否则是主机名
+    instance:
+      prefer-ip-address: true
+
+
+# mybatis 日志（打印sql）
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  #配置mapper xml文件的路径
+  mapper-locations: classpath:com/guli/ucenter/mapper/xml/*.xml
